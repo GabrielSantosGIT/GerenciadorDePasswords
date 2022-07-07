@@ -6,9 +6,10 @@ this.opcao = -1
 def menu():
     print("*****************************************")
     print('\nEscolha uma das Opções abaixo: \n\n'         +
-          '1. : Inserir nova Senha\n'             +
-          '2. : Consultar Senha\n'                +
-          '3. : Atualizar Senha\n'                +
+          '1. : Inserir nova Senha\n'                     +
+          '2. : Consultar Senha\n'                        +
+          '3. : Atualizar Senha\n'                        +
+          '4. : Exluir Senha\n'                           +
           '0. : Sair\n')
     print("*****************************************")
     this.opcao = int(input())
@@ -40,5 +41,9 @@ def operacao():
             print("informe a nova Senha: ")
             this.password = input()
             operacoes.Atualizar(this.sis, 'passwd', this.password)
+        elif this.opcao == 4:
+            print("Informe o Sistema para exclusão dos dados: ")
+            this.sis = input()
+            operacoes.excluir(this.sis)
         else:
             print('Opção escolhida não é válida!')

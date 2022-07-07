@@ -1,6 +1,7 @@
 import mysql.connector
 import conexaoBD #Classe que faz a conexão com o banco de dados
 
+
 db_connection = conexaoBD.conectar()
 con = db_connection.cursor()
 
@@ -39,7 +40,7 @@ def Consultar(sistem):
 
 
         for(sistema, username, passwd) in con:
-            print('username: {}, passwd: {}'.format(username, passwd))
+            print('username: {}, pass0wd: {}'.format(username, passwd))
         print('\n')
     except Exception as erro:
         print(erro)
@@ -61,3 +62,12 @@ def validarSenha(username, senha):
         print('informe a senha: ')
         senha = input()
 
+
+def excluir(sis):
+    try:
+        sql = "delete from users where sistema = '{}'".format(sis)
+        con.execute(sql)
+        db_connection.commit()
+        print('{} Dados Excluídos!'.format(con.rowcount))
+    except Execption as erro:
+         print(erro)

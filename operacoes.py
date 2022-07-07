@@ -1,17 +1,23 @@
 import mysql.connector
 import conexaoBD #Classe que faz a conexão com o banco de dados
-import this
+
 db_connection = conexaoBD.conectar()
 con = db_connection.cursor()
 
 
 def Senha_Master():
 
-    password_master = "123456"
-    senha = input("Digite sua senha Master: ")
-    if senha != password_master:
-        print("Senha inválida! Tente outra vez ...")
-        exit()
+        password_master = input("Digite sua senha Master:" )
+        senha = input("Confirme sua senha Master: " )
+
+        if senha != password_master:
+           while(password_master != senha):
+                print("Senha inválida! Tente outra vez ...")
+                password_master = input("Digite sua senha Master: ")
+                senha = input("Confirme sua senha Master: ")
+
+
+
 
 
 def Inserir(sistema, username, passwd):
@@ -38,9 +44,9 @@ def Consultar(sistem):
     except Exception as erro:
         print(erro)
 
-def Atualizar(sis, sistem, novoDado):
+def Atualizar(sis,campo, novoDado):
     try:
-        sql = "update users set {} = '{}' where sistema = '{}'".format(sistem, novoDado, sis)
+        sql = "update users set {} = '{}' where sistema = '{}'".format(campo, novoDado, sis)
         con.execute(sql)
         db_connection.commit()
         print('{} Atualizado!'.format(con.rowcount))
@@ -48,5 +54,10 @@ def Atualizar(sis, sistem, novoDado):
     except Exception as erro:
         print(erro)
 
+def validarSenha(username, senha):
 
+    while (username == senha):
+        print("Sua senha deve ser diferente do username: ")
+        print('informe a senha: ')
+        senha = input()
 

@@ -1,12 +1,11 @@
 import operacoes
 import this
+
 this.opcao = -1
-this.sistem
-this.sis
 
 def menu():
     print("*****************************************")
-    print('\nEscolha uma das Opções abaixo: \n\n' +
+    print('\nEscolha uma das Opções abaixo: \n\n'         +
           '1. : Inserir nova Senha\n'             +
           '2. : Consultar Senha\n'                +
           '3. : Atualizar Senha\n'                +
@@ -26,15 +25,15 @@ def operacao():
             username = input()
             print('informe a senha: ')
             senha = input()
+            operacoes.validarSenha(username, senha)
             operacoes.Inserir(sistema, username, senha)
         elif this.opcao == 2:
             print('informe qual sistema você deseja consultar login e Senha:')
             this.sistema = input()
             operacoes.Consultar(this.sistema)
         elif this.opcao == 3:
-            print("informe o Sistema ou Serviço que deseja atualizar: ")
-            this.sis = input()
-            operacoes.Atualizar(this.sis, 'sistema', this.sistem)
+            print("informe o Sistema ou Serviço que deseja atualizar seus dados: ")
+            this.sis= str(input())
             print("informe o novo Username: ")
             this.login = input()
             operacoes.Atualizar(this.sis, 'username', this.login)

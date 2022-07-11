@@ -1,6 +1,7 @@
 import mysql.connector
 import conexaoBD #Classe que faz a conexão com o banco de dados
-
+import getpass
+import this
 
 db_connection = conexaoBD.conectar()
 con = db_connection.cursor()
@@ -16,6 +17,7 @@ def Senha_Master():
                 print("Senha inválida! Tente outra vez ...")
                 password_master = input("Digite sua senha Master: ")
                 senha = input("Confirme sua senha Master: ")
+
 
 
 
@@ -71,3 +73,12 @@ def excluir(sis):
         print('{} Dados Excluídos!'.format(con.rowcount))
     except Execption as erro:
          print(erro)
+
+def MostrarSistemas():
+    sql= "select sistema from users;"
+    con.execute(sql)
+
+    for sistema in con.fetchall():
+        print(sistema)
+
+

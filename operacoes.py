@@ -2,24 +2,46 @@ import mysql.connector
 import conexaoBD #Classe que faz a conexão com o banco de dados
 import getpass
 import this
+import re #módulo que fornece expressões regulares em python
 
 db_connection = conexaoBD.conectar()
 con = db_connection.cursor()
 
+#re.search "filtra um padrão".
 
 def Senha_Master():
+        print("Cadastre Sua senha Master: ")
+        password_master = getpass.getpass("")
+        flag = 0
+        while True:
+            if (len(password_master) < 5):
+                 flag = -1
+                 break
+            elif not re.search("[_@$]", password_master):
+                flag = -1
+                break
+            elif re.search("\s", password_master):
+                flag = -1
+                break
 
-        password_master = input("Digite sua senha Master:" )
-        senha = input("Confirme sua senha Master: " )
+            else:
+                flag = 0
+                print("Senha válida! ")
+                print("Agora para acessar o sistema digite sua senha master cadastrada:  ")
+                senha = getpass.getpass("")
 
+
+        if flag == -1:
+           print("Senha inválida!")
+           return Senha_Master()
+
+        print("Agora para acessar o sistema digite sua senha master cadastrada:  ")
+        senha = getpass.getpass("")
         if senha != password_master:
-           while(password_master != senha):
+            while (password_master != senha):
                 print("Senha inválida! Tente outra vez ...")
-                password_master = input("Digite sua senha Master: ")
-                senha = input("Confirme sua senha Master: ")
-
-
-
+                password_master = getpass.getpass("Digite sua senha Master: ")
+                senha = getpass.getpass("Confirme sua senha Master: ")
 
 
 

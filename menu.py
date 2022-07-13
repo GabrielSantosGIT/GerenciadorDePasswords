@@ -70,5 +70,7 @@ def operacao():
         elif this.opcao == 6:
             print("Sua Senha Aleatória Gerada é:\n")
             gerador.GerarSenha()
-        else:
-            print('Opção escolhida não é válida!')
+        elif this.opcao == 0:
+            print("Saíndo...")
+    else:
+        print('Opção escolhida não é válida!')

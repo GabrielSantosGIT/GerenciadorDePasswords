@@ -29,11 +29,12 @@ def Senha_Master():
                 print("Senha válida! ")
                 print("Agora para acessar o sistema digite sua senha master cadastrada:  ")
                 senha = getpass.getpass("")
+                break
 
 
         if flag == -1:
            print("Senha inválida!")
-           return Senha_Master()
+
 
         print("Agora para acessar o sistema digite sua senha master cadastrada:  ")
         senha = getpass.getpass("")
